@@ -666,11 +666,15 @@
                     showPage(currentPage + 1);
                 }
                 
-                // Special effect for last page
-                if (currentPage === totalPages - 1) {
+                // If we're on page 5 (the last story page), go to advertisement page
+                if (currentPage === 5) {
+                    // Show final message briefly then go to advertisement
+                    document.getElementById('final-message').style.opacity = '1';
+                    
+                    // Go to advertisement page after a short delay
                     setTimeout(() => {
-                        document.getElementById('final-message').style.opacity = '1';
-                    }, 1000);
+                        showPage(6);
+                    }, 1500);
                 }
             }, 800);
             
@@ -770,6 +774,11 @@
             
             if (currentPage === 5) {
                 document.getElementById('final-message').style.opacity = '1';
+                
+                // Auto-advance to advertisement page after showing hearts
+                setTimeout(() => {
+                    showPage(6);
+                }, 2000);
             }
         }
         
@@ -827,5 +836,4 @@
         });
     </script>
 </body>
-
 </html>
